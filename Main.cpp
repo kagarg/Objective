@@ -3,6 +3,7 @@
 
 int main() {
 	setlocale(LC_ALL, "ru");
+	srand((unsigned)time(0));
 	/*std::cout << "¬ведите v, (v > 0) >";
 	double v;
 	std::cin >> v;
@@ -14,5 +15,5 @@ int main() {
 	for (double i = 0; i < vec.size(); i++) {
 		std::cout << vec[i]<< " ";
 	}
-	
+	std::cout <<std::endl<<;
 }

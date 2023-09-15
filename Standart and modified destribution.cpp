@@ -40,5 +40,35 @@ std::vector<double> Modified_Func_calc(double x, double v, double u, double l) {
 	std::vector<double> vec = { Modified_Dispersion_calc(v, l), Excess_calc(v), Modified_Density_calc(x,v,u,l), Modified_Expected_value_calc(v) };
 	return vec;
 }
+double Randomizer() {
+	double r;
+	do r = (double)rand() / RAND_MAX; while (r == 0 || r == 1);
+	return r;
+}
+double Random_item12(double v) {
+	double r = Randomizer();
+	double a = (1 / v) - 1;
+	double b = 1 / (exp((1 / v) * log(v)));
+	double x = 0;
+	if (r <= 0.5) {
+		x = b * log(2 * r);
+	}
+	else if (r > 0.5) {
+		x = -b * log(2 * (1 - r));
+	}
+	double r2 = Randomizer();
+	if (log(r2) <= exp(v * log(-abs(x))) + abs(x) / b + a) { return x; }
+	else { Random_item12(v); }
+}
 
-
+double Random_item2(double v) {
+	double a = (1 / v) - 0.5;
+	double b = 1 / (exp((1 / v) * log(v)));
+	double c = 2* pow(b,2);
+	double r = Randomizer();
+	double r2 = Randomizer();
+	double x = b * sqrt(-2 * log(r))* cos(2*M_PI*r2);
+	double r3 = Randomizer();
+	if (log(r3) <= exp(v * log(-abs(x))) + pow(x, 2) / c + a) { return x; }
+	else { Random_item2(v); }
+}
