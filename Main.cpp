@@ -12,8 +12,8 @@ int main() {
 			  << "Плотность распределения равна " << Density_calc(0,v) << std::endl;
 	std::cout << "";*/
 	std::vector<double>vec = Mixed_Func_calc(0.5, 0,1.5,3,2, 0,1.5,3,2);
-	for (double i = 0; i < vec.size(); i++) {
+	for (int i = 0; i < vec.size(); i++) {
 		std::cout << vec[i]<< " ";
 	}
-	std::cout <<std::endl<<;
+	std::cout <<std::endl<<Random_item2(1);
 }

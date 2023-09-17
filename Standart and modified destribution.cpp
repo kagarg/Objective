@@ -48,7 +48,8 @@ double Randomizer() {
 double Random_item12(double v) {
 	double r = Randomizer();
 	double a = (1 / v) - 1;
-	double b = 1 / (exp((1 / v) * log(v)));
+	/*double b = 1 / (exp((1 / v) * log(v)));*/
+	double b = 1 / (pow(v, 1/v));
 	double x = 0;
 	if (r <= 0.5) {
 		x = b * log(2 * r);
@@ -57,18 +58,21 @@ double Random_item12(double v) {
 		x = -b * log(2 * (1 - r));
 	}
 	double r2 = Randomizer();
-	if (log(r2) <= exp(v * log(-abs(x))) + abs(x) / b + a) { return x; }
-	else { Random_item12(v); }
+	//if (log(r2) <= (exp(v * log(-abs(x))) + (abs(x) / b) + a)) { return x; }
+	if (log(r2) <= (-pow(abs(x), v) + (abs(x) / b) + a)) { return x; }
+	else {return  Random_item12(v); }
 }
 
 double Random_item2(double v) {
 	double a = (1 / v) - 0.5;
-	double b = 1 / (exp((1 / v) * log(v)));
+	//double b = 1 / (exp((1 / v) * log(v)));
+	double b = 1 / (pow(v, 1 / v));
 	double c = 2* pow(b,2);
 	double r = Randomizer();
 	double r2 = Randomizer();
 	double x = b * sqrt(-2 * log(r))* cos(2*M_PI*r2);
 	double r3 = Randomizer();
-	if (log(r3) <= exp(v * log(-abs(x))) + pow(x, 2) / c + a) { return x; }
-	else { Random_item2(v); }
+	//if (log(r3) <=( exp(v * log(-abs(x))) + (pow(x, 2) / c) + a)) { return x; }
+	if (log(r3) <= (-pow(abs(x), v) + (pow(x, 2) / c) + a)) { return x; }
+	else {return Random_item2(v); }
 }
