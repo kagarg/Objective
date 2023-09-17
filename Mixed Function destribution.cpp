@@ -12,3 +12,11 @@ std::vector<double> Mixed_Func_calc(double p, double x1, double v1, double u1, d
 	std::vector<double> vec = { mixed_dispersion, excess, mixed_density, mixed_expected_value, asymmetry };
 	return vec;
 }
+
+double Mixed_Random_value(double p, double v1, double v2) {
+	double r = Randomizer();
+	if (r > p) {
+		return Random_item(v1);
+	}
+	else { return Random_item(v2); }
+}

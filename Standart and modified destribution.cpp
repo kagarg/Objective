@@ -45,6 +45,7 @@ double Randomizer() {
 	do r = (double)rand() / RAND_MAX; while (r == 0 || r == 1);
 	return r;
 }
+// part of an algorithm for v in range [1;2)
 double Random_item12(double v) {
 	double r = Randomizer();
 	double a = (1 / v) - 1;
@@ -62,7 +63,7 @@ double Random_item12(double v) {
 	if (log(r2) <= (-pow(abs(x), v) + (abs(x) / b) + a)) { return x; }
 	else {return  Random_item12(v); }
 }
-
+// part of an algorithm for v in range [2; inf)
 double Random_item2(double v) {
 	double a = (1 / v) - 0.5;
 	//double b = 1 / (exp((1 / v) * log(v)));
@@ -75,4 +76,9 @@ double Random_item2(double v) {
 	//if (log(r3) <=( exp(v * log(-abs(x))) + (pow(x, 2) / c) + a)) { return x; }
 	if (log(r3) <= (-pow(abs(x), v) + (pow(x, 2) / c) + a)) { return x; }
 	else {return Random_item2(v); }
+}
+// function for the whole algorithm use
+double Random_item(double v) {
+	if (1 <= v < 2) { return Random_item12(v); }
+	else if (v >= 2) { return Random_item2(v); }
 }

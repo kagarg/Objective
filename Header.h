@@ -20,3 +20,5 @@ std::vector<double> Mixed_Func_calc(double p, double x1, double v1, double u1, d
 double Randomizer();
 double Random_item12(double v);
 double Random_item2(double v);
+double Random_item(double v);
+double Mixed_Random_value(double p, double v1, double v2);
