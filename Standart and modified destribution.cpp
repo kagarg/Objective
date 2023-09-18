@@ -82,3 +82,20 @@ double Random_item(double v) {
 	if (1 <= v < 2) { return Random_item12(v); }
 	else if (v >= 2) { return Random_item2(v); }
 }
+
+std::vector<double> Create_std_set(const int n, double v) {
+	std::vector<double> result;
+	for (int i = 0; i < n; i++) {
+		result.push_back(Random_item(v));
+	}
+	sort(result.begin(), result.end());
+	return result;
+}
+
+std::vector<std::pair<double, double>> Create_std_graph(std::vector<double> vec, double x, double v, double u, double l,const int n) {
+	std::vector<std::pair<double, double>> result;
+	for (int i = 0; i < n; ++i) {
+		result.push_back(std::make_pair(vec[i], Modified_Density_calc(x,v,u,l)));
+	}
+	return result;
+}

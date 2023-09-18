@@ -20,3 +20,19 @@ double Mixed_Random_value(double p, double v1, double v2) {
 	}
 	else { return Random_item(v2); }
 }
+
+std::vector<double>Create_mixed_set(double v1, double v2, double n,double p ) {
+	std::vector<double>vec;
+	for (int i = 0; i < n; i++) {
+		vec.push_back(Mixed_Random_value(p,v1,v2));
+	}
+	sort(vec.begin(), vec.end());
+	return vec;
+}
+std::vector<std::pair<double, double>> generate_mixed_graph(std::vector<double> vec, double p, double x1, double v1, double u1, double l1, double x2, double v2, double u2, double l2, const int n) {
+	std::vector<std::pair<double, double>> result;
+	for (int i = 0; i < n; ++i) {
+		result.push_back(std::make_pair(vec[i], Mixed_Func_calc( p,  x1,  v1,  u1,  l1,  x2, v2,  u2, l2)[2]));
+	}
+	return result;
+}

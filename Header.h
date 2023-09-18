@@ -22,6 +22,8 @@ double Random_item12(double v);
 double Random_item2(double v);
 double Random_item(double v);
 double Mixed_Random_value(double p, double v1, double v2);
+std::vector<double>Create_mixed_set(double v1, double v2, double n, double p);
+std::vector<std::pair<double, double>> generate_mixed_graph(std::vector<double> vec, double p, double x1, double v1, double u1, double l1, double x2, double v2, double u2, double l2, const int n);
 double H_calc(double N, double min, double max);
 std::vector<double> Intervals_creation(double min, double max, double h);
 int Get_interval_index(const std::vector<double>& intervals, const double x);

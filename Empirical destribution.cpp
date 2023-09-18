@@ -98,7 +98,7 @@ double Empirical_Density_calc(std::vector<double> vec, double x) {
 
 std::vector<std::pair<double, double>> Generate_empric_graph(std::vector<double> vec, const int n) {
 	std::vector<std::pair<double, double>> result;
-	for (int i = 0; i < n; ++i) {
+	for (int i = 0; i < n; i++) {
 		result.push_back(std::make_pair(vec[i], Empirical_Density_calc(vec, vec[i])));
 	}
 	return result;
