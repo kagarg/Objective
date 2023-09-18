@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Empirical destribution.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mixed Function destribution.cpp" />
     <ClCompile Include="Standart and modified destribution.cpp" />
