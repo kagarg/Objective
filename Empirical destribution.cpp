@@ -1,7 +1,7 @@
 #include "Header.h"
 
 double H_calc(double N, double min, double max) {
-	return (max - min) / ((int)(1 + log(2)));
+	return ((max - min) / ((int)(1 + log2(N))));
 }
 
 std::vector<double> Intervals_creation(double min, double max, double h ) {
@@ -9,13 +9,13 @@ std::vector<double> Intervals_creation(double min, double max, double h ) {
 	double buffer = min;
 	vec.push_back(buffer);
 	while (buffer < max) {
+		vec.push_back(buffer+h);
 		buffer += h;
-		vec.push_back(buffer);
 	}
 	return vec;
 }
 
-int Get_interval_index(const std::vector<double>& intervals, const double x) {// всегда возвращает левую границу интервала
+int Get_interval_index(const std::vector<double> intervals, const double x) {// всегда возвращает левую границу интервала
 	if (intervals.size() < 2) {												 // always returns the left side of the interval
 		return 0;
 	}
@@ -28,6 +28,7 @@ int Get_interval_index(const std::vector<double>& intervals, const double x) {//
 		}
 	}
 }
+
 double Empiric_Expected_value_calc(std::vector<double> vec) {
 	double summ = 0;
 	for (int i = 0; i < vec.max_size(); i++) {
