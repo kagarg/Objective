@@ -18,13 +18,13 @@
     <ClCompile Include="Main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Standart and modified destribution.cpp">
+    <ClCompile Include="Standart and modified distribution.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Mixed Function destribution.cpp">
+    <ClCompile Include="Mixed Function distribution.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Empirical destribution.cpp">
+    <ClCompile Include="Empirical distribution.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
