@@ -31,7 +31,7 @@ double Empiric_Expected_value_calc(std::vector<double> vec);
 double Empiric_Dispersion_calc(std::vector<double> vec);
 double Empiric_Asymmetry_calc(std::vector<double> vec);
 double Empiric_Excess_calc(std::vector<double> vec);
-double Empirical_Density_calc(std::vector<double> vec, double x);
+double Empiric_Density_calc(std::vector<double> vec, double x);
 std::vector<std::pair<double, double>> Generate_empric_graph(std::vector<double> vec, const int n);
 std::vector<double> Create_std_set(const int n, double v);
 std::vector<std::pair<double, double>> Create_std_graph(std::vector<double> vec, double v, double u, double l, const int n);

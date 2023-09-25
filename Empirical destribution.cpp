@@ -31,7 +31,7 @@ int Get_interval_index(const std::vector<double> intervals, const double x) {// 
 
 double Empiric_Expected_value_calc(std::vector<double> vec) {
 	double summ = 0;
-	for (int i = 0; i < vec.max_size(); i++) {
+	for (int i = 0; i < vec.size(); i++) {
 		summ += vec[i];
 	}
 	return summ / vec.size();
@@ -41,7 +41,7 @@ double Empiric_Expected_value_calc(std::vector<double> vec) {
 double Empiric_Dispersion_calc(std::vector<double> vec) {
 	double summ = 0;
 	double M = Empiric_Expected_value_calc(vec);
-	for (int i = 0; i < vec.max_size(); i++) {
+	for (int i = 0; i < vec.size(); i++) {
 		summ += pow((vec[i] - M),2);
 	}
 	return summ / vec.size();
@@ -51,7 +51,7 @@ double Empiric_Asymmetry_calc(std::vector<double> vec) {
 	double summ = 0;
 	double M = Empiric_Expected_value_calc(vec);
 	double D = Empiric_Dispersion_calc(vec);
-	for (int i = 0; i < vec.max_size(); i++) {
+	for (int i = 0; i < vec.size(); i++) {
 		summ += pow((vec[i] - M), 3);
 	}
 	return (summ / (vec.size()* pow(D, 3/2)));
@@ -61,13 +61,13 @@ double Empiric_Excess_calc(std::vector<double> vec) {
 	double summ = 0;
 	double M = Empiric_Expected_value_calc(vec);
 	double D = Empiric_Dispersion_calc(vec);
-	for (int i = 0; i < vec.max_size(); i++) {
+	for (int i = 0; i < vec.size(); i++) {
 		summ += pow((vec[i] - M), 4);
 	}
 	return ((summ / (vec.size() * pow(D, 2))) - 3);
 }
 
-double Empirical_Density_calc(std::vector<double> vec, double x) {
+double Empiric_Density_calc(std::vector<double> vec, double x) {
 	double h = H_calc(vec.size(),vec[0],vec[vec.size()-1]);
 	auto intervals = Intervals_creation(vec[0], vec[vec.size() - 1], h);
 	int index = Get_interval_index(intervals, x);
@@ -100,7 +100,7 @@ double Empirical_Density_calc(std::vector<double> vec, double x) {
 std::vector<std::pair<double, double>> Generate_empric_graph(std::vector<double> vec, const int n) {
 	std::vector<std::pair<double, double>> result;
 	for (int i = 0; i < n; i++) {
-		result.push_back(std::make_pair(vec[i], Empirical_Density_calc(vec, vec[i])));
+		result.push_back(std::make_pair(vec[i], Empiric_Density_calc(vec, vec[i])));
 	}
 	return result;
 }

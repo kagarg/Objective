@@ -84,7 +84,7 @@ double Random_item2(double v) {
 }
 // function for the whole algorithm use
 double Random_item(double v) {
-	if (1 <= v < 2) { return Random_item12(v); }
+	if ((1 <= v)&&(v<2)) {return Random_item12(v); }
 	else if (v >= 2) { return Random_item2(v); }
 }
 
