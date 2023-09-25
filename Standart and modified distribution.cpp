@@ -83,15 +83,17 @@ double Random_item2(double v) {
 	else {return Random_item2(v); }
 }
 // function for the whole algorithm use
-double Random_item(double v) {
-	if ((1 <= v)&&(v<2)) {return Random_item12(v); }
-	else if (v >= 2) { return Random_item2(v); }
+double Random_item(double v, double u, double l) {
+	double result;
+	if ((1 <= v)&&(v<2)) {result= Random_item12(v); }
+	else if (v >= 2) {result= Random_item2(v); }
+	return ((result *l +u));
 }
 
-std::vector<double> Create_std_set(const int n, double v) {
+std::vector<double> Create_std_set(const int n, double v, double u, double l) {
 	std::vector<double> result;
 	for (int i = 0; i < n; i++) {
-		result.push_back(Random_item(v));
+		result.push_back(Random_item(v, u, l));
 	}
 	sort(result.begin(), result.end());
 	return result;

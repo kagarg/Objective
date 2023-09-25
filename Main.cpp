@@ -1,4 +1,3 @@
-
 #include "Header.h"
 #include <fstream>
 
@@ -24,7 +23,7 @@ int main() {
 				std::cout << "Ошибка ввода v. Введите значение повтороно > ";
 				std::cin >> v;
 			}
-			auto vec = Create_std_set(1000, v);
+			auto vec = Create_std_set(1000, v,u1,l1);
 			auto func = Create_std_graph(vec, v, u1, l1, 1000);
 			std::ofstream file1("standart_distr.txt");
 			for (int i = 0; i < func.size(); ++i) {
@@ -40,13 +39,13 @@ int main() {
 			// standart function print
 			std::cout << "Для стандартного распределения ";
 			std::cout << "Дисперсия равна: " << Modified_Dispersion_calc(v,l1) << std::endl << "Эксцесс:  " << Excess_calc(v) << std::endl
-					  << "Плотность распределения в точке 0 равна " << Modified_Density_calc(0, v, u1, l1) << std::endl << "Мат. Ожидание:  "
+					  << "Плотность распределения в точке " << u1 << " равна: " << Modified_Density_calc(u1, v, u1, l1) << std::endl << "Мат. Ожидание:  "
 					  <<Modified_Expected_value_calc(u1) << std::endl << "Асимметрия:  " <<Asymmetry_calc() << std::endl;
 			
-			std::cout << "Для эмпирического распределения ";
+			std::cout << "Для эмпирического распределения "<<std::endl;
 			std::cout << "Мат. Ожидание:  " << Empiric_Expected_value_calc(vec) << std::endl << "Дисперсия: " 
 					  << Empiric_Dispersion_calc(vec) << std::endl << "Эксцесс:  " << Empiric_Excess_calc(vec) << std::endl
-					  << "Плотность распределения в точке 0 равна: " << Empiric_Density_calc(vec, 0) << std::endl  << "Асимметрия:  " 
+					  << "Плотность распределения в точке "<< u1<<" равна: " << Empiric_Density_calc(vec, u1) << std::endl  << "Асимметрия : " 
 					<< Empiric_Asymmetry_calc(vec) << std::endl;
 			break;
 		}
@@ -73,7 +72,7 @@ int main() {
 				std::cin >> p;
 			}
 
-			auto mixed_vec = Create_mixed_set(v, v2, 1000, p);
+			auto mixed_vec = Create_mixed_set(v, v2, 1000, p, u1, l1, u2, l2);
 			auto func3 = Generate_mixed_graph(mixed_vec, p, v, u1, l1, v2, u2, l2, 1000);
 			std::ofstream file3("mixed_distr.txt");
 			for (int i = 0; i < func3.size(); ++i) {

@@ -13,18 +13,18 @@ std::vector<double> Mixed_Func_calc(double p, double x, double v1, double u1, do
 	return vec;
 }
 
-double Mixed_Random_value(double p, double v1, double v2) {
+double Mixed_Random_value(double p, double v1, double v2, double u1, double l1, double u2, double l2) {
 	double r = Randomizer();
 	if (r > p) {
-		return Random_item(v1);
+		return Random_item(v1, u1, l1);
 	}
-	else { return Random_item(v2); }
+	else { return Random_item(v2, u2, l2); }
 }
 
-std::vector<double>Create_mixed_set(double v1, double v2, double n,double p ) {
+std::vector<double>Create_mixed_set(double v1, double v2, double n,double p, double u1, double l1, double u2, double l2) {
 	std::vector<double>vec;
 	for (int i = 0; i < n; i++) {
-		vec.push_back(Mixed_Random_value(p,v1,v2));
+		vec.push_back(Mixed_Random_value(p,v1,v2,u1,l1,u2,l2));
 	}
 	sort(vec.begin(), vec.end());
 	return vec;
