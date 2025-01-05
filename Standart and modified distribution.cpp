@@ -3,7 +3,6 @@
 
 double Density_calc(double x, double v) {
 	double density = (v / (2 * tgamma(1 / v)) * exp(-pow(abs(x), v)));
-	/*double density = (v / (2 * tgamma(1 / v)) * exp(exp(v * (-log(abs(x))))));*/
 	return density;
 }
 double Standart(double x, double l, double u) {
@@ -14,7 +13,6 @@ double Standart(double x, double l, double u) {
 double Modified_Density_calc(double x, double v, double u, double l) {
 	double xmod = Standart(x, l, u);
 	double mod_density = (v / (2 * tgamma(1 / v)) * exp(-pow(abs(xmod), v))) / l;
-	//double mod_density = (v / (2 * tgamma(1 / v)) * exp(exp(v*(-log(abs(x)))))) / l;
 	return mod_density;
 }
 double Expected_value() { return 0; }
@@ -54,7 +52,6 @@ double Randomizer() {
 double Random_item12(double v) {
 	double r = Randomizer();
 	double a = (1 / v) - 1;
-	//double b = 1 / (exp((1 / v) * log(v)));
 	double b = 1 / (pow(v, 1/v));
 	double x = 0;
 	if (r <= 0.5) {
@@ -65,13 +62,11 @@ double Random_item12(double v) {
 	}
 	double r2 = Randomizer();
 	if (log(r2) <= (exp(v * (-log(abs(x)))) + (abs(x) / b) + a)) { return x; }
-	//if (log(r2) <= (-pow(abs(x), v) + (abs(x) / b) + a)) { return x; }
 	else {return  Random_item12(v); }
 }
 // part of an algorithm for v in range [2; inf)
 double Random_item2(double v) {
 	double a = (1 / v) - 0.5;
-	//double b = 1 / (exp((1 / v) * log(v)));
 	double b = 1 / (pow(v, 1 / v));
 	double c = 2* pow(b,2);
 	double r = Randomizer();
@@ -79,7 +74,6 @@ double Random_item2(double v) {
 	double x = b * sqrt(-2 * log(r))* cos(2*M_PI*r2);
 	double r3 = Randomizer();
 	if (log(r3) <=( exp(v * ( - log(abs(x)))) + (pow(x, 2) / c) + a)) { return x; }
-	/*if (log(r3) <= (-pow(abs(x), v) + (pow(x, 2) / c) + a)) { return x; }*/
 	else {return Random_item2(v); }
 }
 // function for the whole algorithm use
